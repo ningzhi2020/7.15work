@@ -1,195 +1,131 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>轮播图</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>轮播图练习</title>
     <style>
         * {
-            margin:0;
-            padding:0;
-        }
-        a{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             text-decoration: none;
-        }
-        img {
-            width: 100%;
-        }
-
-        .li_img {
-            width: 800px;
-            float: left;
+            vertical-align: middle;
             list-style: none;
-            
         }
-
-        .ul_img {
-            width: 6000px;
-            padding: 0px;
-            margin: 0px;
-            transition: all 1s;
-            
-        }
-
-        .main_div {
-            width: 800px;
+        .banner {
+            margin-top: 100px;
+            width: 100%;
+            height: 390px;
             overflow: hidden;
             position: relative;
-            top: 100px;
-            left: 350px;
         }
-
-        .arrows {
-            z-index: 9999;
-            position: absolute;
-            padding-top: 230px;
-            width: 800px;
+        .banner-con {
+            width: 11520px;
+            height: 100%;
+            /* margin-left: -0px; */
+            transition: all .5s ease-out;
         }
-
-        .arrows span {
-            font-size: 3em;
-            color: seashell;
-        }
-
-        .arrows span:hover {
-            /*变小手*/
-            cursor: pointer;
-            background-color: rgba(192, 192, 192, 0.29);
-        }
-
-        .div_btn {
+        .banner a {
+            display: block;
+            width: 1920px;
+            height: 390px;
             float: left;
-            border-radius: 100px;
-            background-color: #000;
+            overflow: hidden;
+        }
+
+        .banner a:nth-child(1) {
+            background: url(http://www.sxuek.com/statics/images/uek/banner-hyhj.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(2) {
+            background: url(http://www.sxuek.com/statics/images/uek/banner-xtyr.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(3) {
+            background: url(http://www.sxuek.com/statics/images/uek/banner00.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(4) {
+            background: url(http://www.sxuek.com/statics/images/uek/banner2.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(5) {
+            background: url(http://www.sxuek.com/statics/images/uek/banner3.jpg) center center no-repeat;
+        }
+
+        .banner a:nth-child(6) {
+            background: url(http://www.sxuek.com/statics/images/uek/banner4.jpg) center center no-repeat;
+        }
+
+        .banner-bar {
+            width: 420px;
+            height: 10px;
+            position: absolute;
+            bottom: 11px;
+            left: 750px;
+        }
+
+        .banner-bar li {
             width: 60px;
             height: 2px;
-            margin-left: 10px;
-            margin-top: 130px;
-        }
-
-        .div_btn:hover {
-            background-color:#2691FD;
-
+            margin-right: 10px;
+            background-color: rgba(255, 255, 255, 1);
+            float: left;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="main_div">
-        <div class="arrows">
-              <span title="1" class="arrow"><</span>
-              <span title="0" class="arrow" style="float: right">></span>
+    <div class="banner">
+        <div class="banner-con">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
         </div>
-     
-        <ul class="ul_img">
-              <li class="li_img"><img src="imgs/b1.jpg" alt=""></li>
-              <li class="li_img"><img src="imgs/b2.jpg" alt=""></li>
-              <li class="li_img"><img src="imgs/b3.jpg" alt=""></li>
-              <li class="li_img"><img src="imgs/b4.jpg" alt=""></li>
-              <li class="li_img"><img src="imgs/b5.jpg" alt=""></li>
-              <li class="li_img"><img src="imgs/b6.jpg" alt=""></li>
+        <ul class="banner-bar">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
-     </div>
-     
-     <div style="margin-left: 600px">
-              <div class="div_btn"></div>
-              <div class="div_btn"></div>
-              <div class="div_btn"></div>
-              <div class="div_btn"></div>
-              <div class="div_btn"></div>
-              <div class="div_btn"></div>
-     </div>
-     <script>
-        var count = 0;
-        var isgo = false;
-        var timer;
-        
-        window.onload = function () {
-            var ul_img = document.getElementsByClassName("ul_img")[0];
-            var li_img = document.getElementsByClassName("li_img");
-            var arrow = document.getElementsByClassName("arrow");
-            var div_btn = document.getElementsByClassName("div_btn");
-            div_btn[0].style.backgroundColor = "aqua";
-    
-    
-            showtime();
-            function showtime() {
-                timer = setInterval(function () {
-                    if (isgo == false) {
-                        count++;
-                        ul_img.style.transform = "translate(" + -800 * count + "px)";
-                        if (count >= li_img.length - 1) {
-                            count = li_img.length - 1;
-                            isgo = true;
-                        }
-                    }
-                    else {
-                        count--;
-                        ul_img.style.transform = "translate(" + -800 * count + "px)";
-                        if (count <= 0) {
-                            count = 0;
-                            isgo = false;
-                        }
-                    }
-                    for (var i = 0; i < div_btn.length; i++) {
-                        div_btn[i].style.backgroundColor = "aquamarine";
-                    }     
-                    div_btn[count].style.backgroundColor = "aqua";
-                    
-                }, 4000)
+    </div>
+    <script>
+        var imgContainer = document.querySelector('.banner-con');
+        var btns = document.querySelectorAll('.banner-bar li');
+
+        //轮播
+        var num = 1;
+        btns[0].style.backgroundColor = '#2691fd';
+        setInterval(function() {
+            for(var i = 0; i <btns.length; i++) {
+                btns[i].style.backgroundColor = ''
             }
-    
-    
-            for (var i = 0; i < arrow.length; i++) {
-                arrow[i].onmouseover = function () {
-                    clearInterval(timer);
-                }
-                arrow[i].onmouseout = function () {
-                    showtime();
-                }
-                arrow[i].onclick = function () {
-                    if (this.title == 0) {
-                        count++;
-                        if (count > 3) {
-                            count = 0;
-                        }
-                    }
-                    else {
-                        count--;
-                        if (count < 0) {
-                            count = 3;
-                        }
-                    }
-    
-                    ul_img.style.transform = "translate(" + -800 * count + "px)";
-    
-                    for (var i = 0; i < div_btn.length; i++) {
-                        div_btn[i].style.backgroundColor = "aquamarine";
-                    }
-                    div_btn[count].style.backgroundColor = "aqua";
-                }
+            btns[num].style.backgroundColor = '#2691fd';
+            imgContainer.style.marginLeft = '-' + (num * 1920) + 'px';
+            if(num == btns.length - 1) {
+                num = 0;
+            } else {
+                num++;
             }
-            for (var b = 0; b < div_btn.length; b++) {
-                div_btn[b].index = b;
-                div_btn[b].onmouseover = function () {
-    
-                    clearInterval(timer);
-    
-                    for (var a = 0; a < div_btn.length; a++) {
-                        div_btn[a].style.backgroundColor = "aquamarine";
-                    }
-                    div_btn[this.index].style.backgroundColor = "aqua";
-                    if (this.index == 3) {
-                        isgo = true;
-                    }
-                    if (this.index == 0) {
-                        isgo = false;
-                    }
-                    count = this.index;
-                    ul_img.style.transform = "translate(" + -800 * this.index + "px)";
+        }, 3000);
+
+        //点击事件
+        for(let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                num = i;
+                for(var j = 0; j < btns.length; j++) {
+                    btns[j].style.backgroundColor = '';
                 }
-                div_btn[b].onmouseout = function () {         
-                    showtime();
-                }
+                this.style.backgroundColor = '#2691fd';
+                imgContainer.style.marginLeft = '-' + (num  * 1920) + 'px';
             }
         }
     </script>
